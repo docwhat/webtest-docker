@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -eux
+
+exec docker \
+  run --rm \
+  --name webtest \
+  -p 8080:8080 \
+  testserver
