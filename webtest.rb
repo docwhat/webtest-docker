@@ -1,21 +1,39 @@
 require 'sinatra'
+require 'json'
+
+ERROR_CODES = {
+  400 => 'Bad Request',
+  401 => 'Unauthorized',
+  403 => 'Forbidden',
+  404 => 'Not Found',
+  405 => 'Method Not Allowed',
+  406 => 'Not Acceptable',
+  418 => "I'm a teapot (RFC 2324)"
+}
+
+TYPES = {
+  text: 'Hello Text World!',
+  html: '<h1>Hello HTML World!</h1>',
+  json: '{"message":"Hello JSON World!"}'
+}
 
 get '/' do
-  content_type :text
-  'Hello World!'
+  haml :index, format: :html5
 end
 
-get '/type/text' do
-  content_type :text
-  'Hello Text World!'
+TYPES.each_pair do |sym, body|
+  get "/type/#{sym}" do
+    content_type sym
+    body
+  end
 end
 
-get '/type/html' do
-  content_type :html
-  '<h1>Hello HTML World!</h1>'
-end
-
-get '/type/json' do
-  content_type :json
-  '{"message":"Hello JSON World!"}'
+ERROR_CODES.each_pair do |code, text|
+  get "/code/#{code}" do
+    content_type :json
+    halt(
+      code,
+      { code: code, message: text }.to_json
+    )
+  end
 end

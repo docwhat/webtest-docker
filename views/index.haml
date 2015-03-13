@@ -1,0 +1,23 @@
+%h1 Web Test engine
+
+%ul
+
+  %li
+    %code Content-Type
+    %ul
+      - TYPES.each_pair do |sym, body|
+        %li
+          %a{href: "/type/#{sym}"}= sym
+          &mdash;
+          %code
+            &= body
+  %li
+    HTTP Status Codes
+    %ul
+      - ERROR_CODES.each_pair do |code, message|
+        %li
+          %a{href: "/code/#{code}"}= "#{code} &mdash; #{message}"
+
+%h1 README
+
+= markdown :readme
