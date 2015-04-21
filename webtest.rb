@@ -1,5 +1,10 @@
 require 'sinatra'
 require 'json'
+require 'shellwords'
+
+ENV.each_pair do |k, v|
+  puts "ENV: #{k}=#{Shellwords.escape v}"
+end
 
 ERROR_CODES = {
   400 => 'Bad Request',
