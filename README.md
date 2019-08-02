@@ -1,7 +1,7 @@
 Web Test Docker Container
 -------------------------
 
-**DEPRECATED** [the-internet](https://the-internet.herokuapp.com) ([source](https://github.com/tourdedave/the-internet)) is a much better version and kept up-to-date.
+**DEPRECATED** [the-internet](https://the-internet.herokuapp.com) ([source](https://github.com/tourdedave/the-internet)) is much better and kept up-to-date.
 
 A container with a simple web server for testing web connections with.
 
